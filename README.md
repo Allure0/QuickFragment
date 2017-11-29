@@ -14,7 +14,63 @@ Fragment的使用一般用于Tab类型UI界面,或者模块化流程式中使用
 - 支持类似Activity的startActivityForResult的回执信息
 - 支持参数传递并且回执
 
+## 动画设置
 
+ 
+| 方法        | 解释|  默认值| 
+| :--------:  | :-----:  | :--:|
+| useAnim        | 是否使用Fragment动画    | false|  
+| enterAnim        | 入栈动画    |  R.animator.fragment_slide_left_enter| 
+| exitAnim        | ----    | R.animator.fragment_slide_left_exit| 
+| popEnterAnim       | ----    | R.animator.fragment_slide_right_enter|  
+| popExitAnim      | 出栈动画    | R.animator.fragment_slide_right_exit  | 
+
+注意使用的时候使用**属性动画**,否则出栈动画会有显示异常。
+
+```
+public class FlowModeActivity extends QuickActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.flowmode_activity);
+
+        startFragment(StartFragment.class);
+
+    }
+
+   @Override
+    public boolean useAnim() {
+        return true;
+    }
+
+    @Override
+    public int enterAnim() {
+        return super.enterAnim();
+    }
+
+    @Override
+    public int exitAnim() {
+        return super.exitAnim();
+    }
+
+    @Override
+    public int popEnterAnim() {
+        return super.popEnterAnim();
+    }
+
+    @Override
+    public int popExitAnim() {
+        return super.popExitAnim();
+    }
+
+    @Override
+    public int fragmentId() {
+        return R.id.rootview;
+    }
+
+}
+```
 
 ## Tab类型（使用showFragment（XXX））
   Tab类型UI界面的fragment属于同一层级,一般不将其加入回退栈,并且直接采用Hide Show的方式进行显示隐藏控制。
