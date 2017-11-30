@@ -70,8 +70,7 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
      */
     public final <T extends QuickFragment> void showFragment(Class<T> clazz) {
         try {
-            QuickFragment showFragment =
-                    (QuickFragment) fragmentManager.findFragmentByTag(clazz.getName());
+            QuickFragment showFragment = findFragmentByTag(clazz);
 
             if (showFragment == null) {
                 showFragment = clazz.newInstance();
@@ -83,6 +82,50 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Show a fragment.
+     *
+     * @param targetFragment fragment to display.
+     * @param <T>            {@link QuickFragment}.
+     */
+    public final <T extends QuickFragment> void showFragment(T targetFragment) {
+        try {
+            QuickFragment showFragment = findFragmentByTag(targetFragment);
+
+            if (showFragment == null) {
+                showFragment = targetFragment;
+                if (showFragment == null) {
+                    return;
+                }
+            }
+            switchFragment(showFragment);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *
+     * @param targetFragment
+     * @param <T>   {@link QuickFragment}.
+     * @return {@link QuickFragment}.
+     */
+    @SuppressWarnings("unchecked")
+    protected <T extends QuickFragment> T findFragmentByTag(T targetFragment) {
+        return (T) fragmentManager.findFragmentByTag(targetFragment.getClass().getName());
+    }
+
+    /**
+     *
+     * @param fragmentClass
+     * @param <T>   {@link QuickFragment}.
+     * @return   {@link QuickFragment}.
+     */
+    @SuppressWarnings("unchecked")
+    protected <T extends QuickFragment> T findFragmentByTag(Class<T> fragmentClass) {
+        return (T) fragmentManager.findFragmentByTag(fragmentClass.getName());
     }
 
 

@@ -14,7 +14,8 @@ public class MainActivity extends QuickActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        showFragment(FragmentOne.class);
+//        showFragment(FragmentOne.class);
+        showFragment(new FragmentOne());
     }
 
     @Override

@@ -38,13 +38,15 @@ public class LazyFragmentContent extends QuickFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Log.e(TAG, content);
-
+        textView = rootView.findViewById(R.id.text);
+        textView.setText(content);
     }
 
     @Override
@@ -54,8 +56,8 @@ public class LazyFragmentContent extends QuickFragment {
 
     @Override
     protected void initLazy() {
-        textView = rootView.findViewById(R.id.text);
-        textView.setText(content);
+        //懒加载设置值或者网络请求等
+//        textView.setText(content);
     }
 
     @Override
@@ -65,6 +67,7 @@ public class LazyFragmentContent extends QuickFragment {
 
     @Override
     protected void initListener() {
-
+        //初始化控件
+//        textView = rootView.findViewById(R.id.text);
     }
 }

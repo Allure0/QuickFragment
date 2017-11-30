@@ -140,8 +140,8 @@ public abstract class LazyFragment extends Fragment {
             return;
         }
         isFirstLoad = false;
-        initLazy();
         initListener();
+        initLazy();
     }
 
     protected abstract int initFragmentLayout();
