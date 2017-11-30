@@ -1,5 +1,6 @@
 package com.allure.demo.tab;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -18,33 +19,26 @@ import com.allure.fragment.QuickFragment;
 public class FragmentThree extends QuickFragment {
     private static final String TAG = "FragmentThree";
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e(TAG, "onAttach");
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.e(TAG, "onCreate");
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_three, container, false);
+        Log.e(TAG, "onCreateView");
 
-    }
-
-    @Override
-    protected void initListener() {
-
-    }
-
-    @Override
-    protected void initLazy() {
-        Log.d("initLazy",TAG);
-
-    }
-
-    @Override
-    protected void initNotLazy() {
-        Log.d("initNotLazy",TAG);
-
-    }
-
-    @Override
-    protected int initFragmentLayout() {
-        return R.layout.fragment_three;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
@@ -56,4 +50,49 @@ public class FragmentThree extends QuickFragment {
             }
         });
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.e(TAG, "onDestroyView");
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy");
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.e(TAG, "onDetach");
+
+    }
+
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected void initLazy() {
+        Log.d(TAG, "initLazy");
+
+    }
+
+    @Override
+    protected void initNotLazy() {
+        Log.d(TAG, "initNotLazy");
+
+    }
+
+    @Override
+    protected int initFragmentLayout() {
+        return R.layout.fragment_three;
+    }
+
 }

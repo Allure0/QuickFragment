@@ -71,7 +71,7 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
     public final <T extends QuickFragment> void showFragment(Class<T> clazz) {
         try {
             QuickFragment showFragment =
-                    (QuickFragment) fragmentManager.findFragmentByTag(clazz.getClass().getSimpleName());
+                    (QuickFragment) fragmentManager.findFragmentByTag(clazz.getName());
 
             if (showFragment == null) {
                 showFragment = clazz.newInstance();
@@ -213,9 +213,9 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
         if (targetFragment.isAdded()) {
             fragmentTransaction.show(targetFragment);
         } else {
-            fragmentTransaction.add(fragmentId(), targetFragment, targetFragment.getClass().getSimpleName());
+            fragmentTransaction.add(fragmentId(), targetFragment, targetFragment.getClass().getName());
         }
-        Log.d("switchFragment", targetFragment.getClass().getSimpleName());
+        Log.d("switchFragment", targetFragment.getClass().getName());
         fragmentTransaction.commit();
         mCurrentFragment = targetFragment;
     }

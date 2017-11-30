@@ -37,7 +37,7 @@ public class FragmentTwo extends QuickFragment {
 
     @Override
     protected int initFragmentLayout() {
-        return R.layout.fragmen_two;
+        return R.layout.fragment_two;
     }
 
     @Override

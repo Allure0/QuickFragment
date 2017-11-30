@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="#ffffff"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/relative"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="#ffffff"
     android:orientation="vertical">
 
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabMode="scrollable" />
 
-
-    <Button
-        android:id="@+id/buttonPanel"
-        android:text="One"
-        android:onClick="one"
-        android:layout_weight="1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
-
-
-</RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
