@@ -197,3 +197,9 @@ startFragment(BackStackFragment1.class, false);
     }
 ```
 ### 如果是没有配合ViewPager使用，那么初始化请求设置等操作直接在initNotLazy执行，如果在initLazy执行界面将不会显示
+
+# License
+
+Copyright 2017 Cherish（Allure）
+
+Source code of the QuickFragment Project can be used according to the [Apache License, Version 2.0.](http://www.apache.org/licenses/LICENSE-2.0.html)
