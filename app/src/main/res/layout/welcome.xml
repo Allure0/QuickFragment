@@ -24,5 +24,12 @@
         android:onClick="flowmode"
         android:text="模块化流程式使用" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="lazyFragment"
+        android:text="懒加载Fragment" />
+
 
 </LinearLayout>

@@ -7,13 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 
 
 /**
  * Created by Cherish on 2017/11/28.
  */
-public class QuickFragment extends Fragment {
+public abstract class QuickFragment extends LazyFragment {
 
     public static final int RESULT_OK = QuickActivity.RESULT_OK;
     public static final int RESULT_CANCELED = QuickActivity.RESULT_CANCELED;
@@ -23,7 +22,12 @@ public class QuickFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity = (QuickActivity) context;
+        try {
+            activity = (QuickActivity) context;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -289,8 +293,6 @@ public class QuickFragment extends Fragment {
     private <T extends QuickFragment> void startFragment(T targetFragment, boolean stickyStack, int requestCode) {
         activity.startFragment(this, targetFragment, stickyStack, requestCode);
     }
-
-
 
 
 }

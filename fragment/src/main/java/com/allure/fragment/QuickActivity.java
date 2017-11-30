@@ -26,7 +26,7 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
 
     public static final int REQUEST_CODE_INVALID = -1;
 
-    //The current display of Fragment
+    // The current display of Fragment
     protected QuickFragment mCurrentFragment;
 
     private FragmentManager fragmentManager;
@@ -228,9 +228,8 @@ public abstract class QuickActivity extends AppCompatActivity implements AnimInt
     private FragmentTransaction getFragmentTransaction() {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //if need fragment anim
+        // if need fragment anim
         if (useAnim()) {
-
             fragmentTransaction.setCustomAnimations(enterAnim(), exitAnim(), popEnterAnim(), popExitAnim());
         }
         return fragmentTransaction;

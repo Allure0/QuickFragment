@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.allure.demo.fragment.FlowModeActivity;
+import com.allure.demo.lazyfragment.LazyFragmentActivity;
 import com.allure.demo.tab.MainActivity;
 
 /**
@@ -28,6 +29,8 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(new Intent(WelcomeActivity.this,FlowModeActivity.class));
     }
 
+    public void lazyFragment(View view) {
+        startActivity(new Intent(WelcomeActivity.this,LazyFragmentActivity.class));
 
-
+    }
 }

@@ -15,8 +15,25 @@ import com.allure.fragment.QuickFragment;
 
 public class BackStackFragment2 extends QuickFragment {
 
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_backstack2, container, false);
+    protected int initFragmentLayout() {
+        return R.layout.fragment_backstack2;
+    }
+
+    @Override
+    protected void initLazy() {
+
+    }
+
+    @Override
+    protected void initNotLazy() {
+
+    }
+
+    @Override
+    protected void initListener() {
+
     }
 }

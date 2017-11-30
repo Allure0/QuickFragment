@@ -2,9 +2,8 @@ package com.allure.demo.tab;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.allure.demo.R;
@@ -15,12 +14,30 @@ import com.allure.fragment.QuickFragment;
  */
 
 public class FragmentTwo extends QuickFragment {
+    private static final String TAG = "FragmentTwo";
 
-    @Nullable
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragmen_two, container, false);
+    protected void initListener() {
 
+    }
+
+    @Override
+    protected void initLazy() {
+        Log.d("initLazy",TAG);
+
+    }
+
+    @Override
+    protected void initNotLazy() {
+        Log.d("initNotLazy",TAG);
+
+    }
+
+    @Override
+    protected int initFragmentLayout() {
+        return R.layout.fragmen_two;
     }
 
     @Override
