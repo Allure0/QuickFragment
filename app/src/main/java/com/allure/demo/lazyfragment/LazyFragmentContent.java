@@ -15,7 +15,7 @@ import com.allure.fragment.QuickFragment;
 
 public class LazyFragmentContent extends QuickFragment {
     private static final String TAG = "LazyFragmentContent";
-    public static final String CONTENT_KEY="content";
+    public static final String CONTENT_KEY = "content";
     TextView textView;
     String content;
 
@@ -27,6 +27,7 @@ public class LazyFragmentContent extends QuickFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
