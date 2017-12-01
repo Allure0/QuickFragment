@@ -167,11 +167,12 @@ public abstract class QuickFragment extends LazyFragment {
         this.mStackEntity = stackEntity;
     }
 
+
     /**
      * You should override it.
-     *
-     * @param resultCode resultCode.
-     * @param result     {@link Bundle}.
+     * @param requestCode resultCode
+     * @param resultCode resultCode
+     * @param result {@link Bundle}.
      */
     public void onFragmentResult(int requestCode, @ResultCode int resultCode, @Nullable Bundle result) {
     }

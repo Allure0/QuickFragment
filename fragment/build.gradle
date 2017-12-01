@@ -1,12 +1,9 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion 26
 
-
-
     defaultConfig {
-        minSdkVersion 18
+        minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -20,6 +17,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    lintOptions {
+
+        //lint 遇到 error 时继续 构建
+        abortOnError false
     }
 
 }
