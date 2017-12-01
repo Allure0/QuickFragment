@@ -16,6 +16,12 @@ Fragment的使用一般用于Tab类型UI界面,或者模块化流程式中使用
 - 支持类似Activity的startActivityForResult的回执信息
 - 支持参数传递并且回执
 
+## 引入方式
+
+`
+compile 'com.allure0:QuickFragment:1.0.0'
+`
+
 ## 动画设置
 
 注意使用的时候使用**属性动画**,否则出栈动画会有显示异常。
