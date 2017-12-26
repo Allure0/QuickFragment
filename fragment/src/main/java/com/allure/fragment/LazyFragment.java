@@ -55,6 +55,7 @@ public abstract class LazyFragment extends Fragment {
             isFirstLoad = true;
             isPrepared = true;
             rootView = inflater.inflate(initFragmentLayout(), container, false);
+            initListener();
             initNotLazy();
             lazyLoad();
         } else {
@@ -140,7 +141,6 @@ public abstract class LazyFragment extends Fragment {
             return;
         }
         isFirstLoad = false;
-        initListener();
         initLazy();
     }
 
