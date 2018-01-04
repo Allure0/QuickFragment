@@ -19,7 +19,7 @@ Fragment的使用一般用于Tab类型UI界面,或者模块化流程式中使用
 ## 引入方式
 
 `
-compile 'com.allure0:QuickFragment:1.0.1'
+compile 'com.allure0:QuickFragment:1.0.2'
 `
 
 ## 动画设置
@@ -202,7 +202,6 @@ startFragment(BackStackFragment1.class, false);
 
     }
 ```
-### 如果是没有配合ViewPager使用，那么初始化请求设置等操作直接在initNotLazy执行，如果在initLazy执行界面将不会显示
 
 # License
 
