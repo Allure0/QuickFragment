@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.lang.reflect.Field;
-
 
 /**
  * <pre>
@@ -29,13 +27,13 @@ import java.lang.reflect.Field;
  * Created by Cherish on 2017/11/30.
  *
  * </pre>
- *  If you need to be lazy fragment, need to initialize it at initLazy.
- *  If you don't need to be lazy fragment, need to initialize it at initNotLazy and initLazy should be empty.
- *
- *
+ * If you need to be lazy fragment, need to initialize it at initLazy.
+ * If you don't need to be lazy fragment, need to initialize it at initNotLazy and initLazy should be empty.
+ * <p>
+ * <p>
  * Tips:1
- *  If used with ViewPager,invoke setUserVisibleHint.
- *
+ * If used with ViewPager,invoke setUserVisibleHint.
+ * <p>
  * Tips:2
  * If userd with FragmentTransaction.show() or FragmentTransaction.hide(),invoke onHiddenChanged.
  */
@@ -43,114 +41,47 @@ import java.lang.reflect.Field;
 
 public abstract class LazyFragment extends Fragment {
 
+    private boolean isCreateView;
+    private boolean isLoadDataComplete;
     protected View rootView;
-    private boolean isVisible;
-    private boolean isPrepared;
-    private boolean isFirstLoad = true;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         if (null == rootView) {
-            isFirstLoad = true;
-            isPrepared = true;
             rootView = inflater.inflate(initFragmentLayout(), container, false);
-            initListener();
-            initNotLazy();
-            lazyLoad();
         } else {
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null) {
                 parent.removeView(rootView);
             }
         }
+        isCreateView = true;
         return rootView;
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        // for bug ---> java.lang.IllegalStateException: Activity has been destroyed
-        try {
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-            childFragmentManager.setAccessible(true);
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (getUserVisibleHint() && !isLoadDataComplete) {
+            isLoadDataComplete = true;
+            lazyLoadData();
         }
     }
 
-    /**
-     * If used with Viewpager{@link android.support.v4.view.ViewPager}
-     *
-     * @param isVisibleToUser
-     */
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {
-            isVisible = true;
-            onVisible();
-        } else {
-            isVisible = false;
-            onInvisible();
+        if (isVisibleToUser && !isLoadDataComplete && isCreateView) {
+            isLoadDataComplete = true;
+            lazyLoadData();
         }
-    }
-
-
-    /**
-     * If used with FragmentTransaction{@link android.support.v4.app.FragmentTransaction},and used show or hide
-     * If the initial fragment need display,it needs hide and then show
-     *
-     * @param hidden hidden true if the fragment is now hidden, false if it is not visible
-     */
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {
-            isVisible = true;
-            onVisible();
-        } else {
-            isVisible = false;
-            onInvisible();
-        }
-    }
-
-    /**
-     * Something can do do it,if is show
-     */
-    protected void onVisible() {
-        lazyLoad();
-    }
-
-    /**
-     * Something can do do it,if is hidden
-     */
-    protected void onInvisible() {
-    }
-
-
-    /**
-     * Lazy load
-     */
-    protected void lazyLoad() {
-        if (!isPrepared || !isVisible || !isFirstLoad) {
-            return;
-        }
-        isFirstLoad = false;
-        initLazy();
     }
 
     protected abstract int initFragmentLayout();
 
-    protected abstract void initLazy();
-
-    protected abstract void initNotLazy();
-
-    protected abstract void initListener();
-
+    protected abstract void lazyLoadData();
 
 }
