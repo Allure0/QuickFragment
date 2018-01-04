@@ -36,8 +36,7 @@ public class FragmentThree extends QuickFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG, "onCreateView");
-
+        Log.e(TAG,"onCreateView");
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
@@ -73,23 +72,11 @@ public class FragmentThree extends QuickFragment {
     }
 
 
-    @Override
-    protected void initListener() {
-
-    }
 
     @Override
-    protected void initLazy() {
-        Log.d(TAG, "initLazy");
-
+    protected void lazyLoadData() {
+        Log.e(TAG,"FragmentThree");
     }
-
-    @Override
-    protected void initNotLazy() {
-        Log.d(TAG, "initNotLazy");
-
-    }
-
     @Override
     protected int initFragmentLayout() {
         return R.layout.fragment_three;

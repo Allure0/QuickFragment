@@ -4,9 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -26,19 +24,12 @@ public class CallBackFragment extends QuickFragment {
     }
 
     @Override
-    protected void initLazy() {
+    protected void lazyLoadData() {
 
     }
 
-    @Override
-    protected void initNotLazy() {
 
-    }
 
-    @Override
-    protected void initListener() {
-
-    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

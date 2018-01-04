@@ -21,25 +21,18 @@ public class BackStackFragment1 extends QuickFragment {
     private int type = 1;
 
 
-    @Override
-    protected void initListener() {
 
-    }
-
-    @Override
-    protected void initLazy() {
-
-    }
-
-    @Override
-    protected void initNotLazy() {
-
-    }
 
     @Override
     protected int initFragmentLayout() {
         return R.layout.fragment_backstack1;
     }
+
+    @Override
+    protected void lazyLoadData() {
+
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

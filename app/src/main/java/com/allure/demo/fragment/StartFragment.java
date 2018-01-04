@@ -27,19 +27,12 @@ public class StartFragment extends QuickFragment {
     }
 
     @Override
-    protected void initLazy() {
+    protected void lazyLoadData() {
 
     }
 
-    @Override
-    protected void initNotLazy() {
 
-    }
 
-    @Override
-    protected void initListener() {
-
-    }
 
 
     @Override

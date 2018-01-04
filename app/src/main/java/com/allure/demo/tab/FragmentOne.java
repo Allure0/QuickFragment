@@ -6,7 +6,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.allure.demo.R;
 import com.allure.demo.lazyfragment.LazyFragmentContent;
@@ -25,20 +27,34 @@ public class FragmentOne extends QuickFragment {
     private List<String> title = new ArrayList<>();
     private List<Fragment> fragments = new ArrayList<>();
     private String[] string = new String[]{"Java", "C++", "C", "Python", "Ruby", "Kotlin", "iOS", "Android", "Web"};
+
+
     @Override
-    protected void initListener() {
+    protected int initFragmentLayout() {
+        return R.layout.fragment_one;
+    }
+
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.e(TAG,"onCreateView");
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+
 
     }
 
     @Override
-    protected void initLazy() {
-        Log.d("initLazy",TAG);
+    protected void lazyLoadData() {
+        Log.e(TAG,"FragmentOne");
 
-    }
-
-    @Override
-    protected void initNotLazy() {
-        Log.d("initNotLazy",TAG);
         TabLayout tabLayout = rootView.findViewById(R.id.tab_layout);
         ViewPager viewPager = rootView.findViewById(R.id.view_pager);
 
@@ -52,17 +68,6 @@ public class FragmentOne extends QuickFragment {
         QuickFragmentStateAdapter viewPagerAdapter = new QuickFragmentStateAdapter(getChildFragmentManager(), fragments, title);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-    }
-
-    @Override
-    protected int initFragmentLayout() {
-        return R.layout.fragment_one;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-
-
     }
 
     @Override

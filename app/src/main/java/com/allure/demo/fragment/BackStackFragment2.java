@@ -1,11 +1,5 @@
 package com.allure.demo.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.allure.demo.R;
 import com.allure.fragment.QuickFragment;
 
@@ -23,17 +17,9 @@ public class BackStackFragment2 extends QuickFragment {
     }
 
     @Override
-    protected void initLazy() {
+    protected void lazyLoadData() {
 
     }
 
-    @Override
-    protected void initNotLazy() {
 
-    }
-
-    @Override
-    protected void initListener() {
-
-    }
 }
