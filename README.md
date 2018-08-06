@@ -188,20 +188,6 @@ startFragment(BackStackFragment1.class, true);
 ```
 startFragment(BackStackFragment1.class, false);
 ```
-# 懒加载
-
-```
-@Override
-    protected void initLazy() {
-        //懒加载设置值或者网络请求等
-//        textView.setText(content);
-    }
-
-    @Override
-    protected void initNotLazy() {
-
-    }
-```
 
 # License
 
